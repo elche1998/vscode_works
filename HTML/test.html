@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的标题</title>
     <style type="text/css">
-        h1{color:red}
-        body {background-color:yellow}
-        p {color:blue}
+    h1{text-align: center;}
+    p {color:grey;text-align: center;}
     </style>
 </head>
 <body>
@@ -18,6 +17,22 @@
     <p>花落知多少</p>
     <hr>
     <!--这是一首唐诗-->
-    <a href="https://www.baidu.com/" target="_blank" rel="noopener noreferrer">百度</a>
+    <div id="picture" style="background-color:#FFD700;height:400px;width:300px;float:left;">
+        <a href="https://baike.baidu.com/item/%E6%98%A5%E6%99%93/31425?fr=aladdin" target="_blank" rel="noopener noreferrer">百度百科</a><br>
+        <img src="pic.jpg" alt="Google Chrome" width="180" height="320">
+    </div>
+    <div id="button" style="background-color:#FF00FF;height:400px;width:300px;float:left;">
+        你喜欢这首诗吗？
+        <form>
+            <input type="radio" name="answer" value="Yes">是的<br>
+            <input type="radio" name="answer" value="No">不是
+        </form>
+    </div>
+    <div id="name" style="background-color:#FF0000;height:400px;width:300px;float:left;">
+        <form name="input" action="yes.html" method="get">
+            你的名字: <input type="text" name="user">
+        <input type="submit" value="提交">
+        </form>
+    </div>
 </body>
 </html>

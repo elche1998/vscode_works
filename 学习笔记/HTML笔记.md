@@ -222,8 +222,3 @@ XHTML 是以 XML 格式编写的 HTML。
    1. 元素必须小写，必须正确嵌套，必须始终关闭。空元素必须包含关闭标签（`<img src="happy.gif" alt="Happy face" />`，`<br />`）。
    2. 文档必须有一个根元素。`<html xmlns="http://www.w3.org/1999/xhtml"></html>`
 3. 属性：属性必须小写，必须用双引号包围，属性简写是禁止的。
-
-# HTML5的新特性
-## 一、图形
-### canvas
-### 内联SVG。
