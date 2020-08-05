@@ -214,7 +214,7 @@ scheme://host.domain:port/path/filename
 * path - 定义服务器上的路径（如果省略，则文档必须位于网站的根目录中）。
 * filename - 定义文档/资源的名称
 ## 八、XHTML
-XHTML 是以 XML 格式编写的 HTML。
+XHTML 是以 XML 格式编写的 HTML。（写html5的时候尽量按照这种规范）
 1. 文档：
    1. XHTML DOCTYPE 是强制性的。
    2. `<html>` 中的 XML namespace 属性是强制性的,`<html>`、`<head>`、`<title>` 以及 `<body>` 也是强制性的
@@ -222,3 +222,54 @@ XHTML 是以 XML 格式编写的 HTML。
    1. 元素必须小写，必须正确嵌套，必须始终关闭。空元素必须包含关闭标签（`<img src="happy.gif" alt="Happy face" />`，`<br />`）。
    2. 文档必须有一个根元素。`<html xmlns="http://www.w3.org/1999/xhtml"></html>`
 3. 属性：属性必须小写，必须用双引号包围，属性简写是禁止的。
+
+# HTML5
+```html
+<!DOCTYPE html>
+<html lang="en"><!--浏览器不自动翻译英语-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!--为搜索引擎定义关键词-->
+    <title>文档标题</title>
+</head>
+<body>
+    <p>文档内容</p>
+</body>
+</html>
+```
+## 一、HTML5规范
+1. 已移除的元素：`<acronym><applet><basefont><big><center><dir><font><frame><frameset><noframes><strike><tt>`
+2. html5的新特征：
+   * 开头用`<!DOCTYPE html>`
+   * 简化`<meta>`：`<meta charset="UTF-8">`
+   * 省略`html`，`<head>`，`<body>`等元素（不推荐！）。
+   * 省略`<p>`结束标记。（不推荐！）
+3. 元素名小写，属性名小写。
+4. 属性值加引号。`<table class="table striped">`
+5. 关闭空元素（不一定非要）：`<meta charset="utf-8" />`，在 XHTML 和 XML 中斜线 (/) 是必须的。
+6. 缩进用两个空格，不用tab
+## 二、浏览器支持问题
+针对IE ——> 完美解决方案
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>渲染 HTML5</title>
+  <!--[if lt IE 9]>
+  <script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+  <![endif]-->
+</head>
+ 
+<body>
+ 
+<h1>我的第一篇文章</h1>
+ 
+<article>
+菜鸟教程 —— 学的不仅是技术，更是梦想！！！
+</article>
+ 
+</body>
+</html>
+```
+## 三、canvas
