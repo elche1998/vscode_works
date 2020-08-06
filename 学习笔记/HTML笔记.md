@@ -74,7 +74,7 @@
    <h1 style="text-align:center;">居中对齐的标题</h1>
    <p style="font-family:arial;color:red;font-size:20px;">一个段落。</p>
    ```
-2. 内部样式表
+2. 内部样式表（重要）
    ```html
    <head>
    <style type="text/css">
@@ -83,7 +83,7 @@
    </style>
    </head>
    ```
-3. 外部样式表
+3. 外部样式表（重要）
    ```html
    <head>
    <link rel="stylesheet" type="text/css" href="mystyle.css">
@@ -272,4 +272,19 @@ XHTML 是以 XML 格式编写的 HTML。（写html5的时候尽量按照这种�
 </body>
 </html>
 ```
-## 三、canvas
+## 三、HTML5新元素
+### （1）图形
+1. canvas
+2. 内联 SVG
+### （2）数学标记语言(MathML)
+### （3）拖放(Drag 和 Drop)
+托福阅读14题，把正确答案拖到框中
+### （4）地理定位(Geolocation)
+## 四、多媒体
+### 视频
+### 音频
+## 五、新input类型
+## 六、表单
+### 新表单元素
+### 新表单属性
+## 七、语义元素
