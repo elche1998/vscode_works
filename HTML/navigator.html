@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Jason Qi" content="width=device-width, initial-scale=1.0">
+    <title>导航</title>
+    <style>
+        ul{
+            list-style-type: none;
+            margin:0;
+            padding:0;
+            background-color:rgb(240, 240, 240);
+            height: 100%;
+            position:fixed;
+            overflow: auto;
+        }
+        li a{
+            display: block;
+            width: 120px;
+            color: black;
+            font-size: large;
+            font: bold;
+            text-align: center;
+            text-decoration: none;
+            padding: 5px 0px;
+        }
+        li a.active{
+            color: white;
+            background-color: #4CAF50;
+        }
+        li a:hover:not(.active){
+            color: white;
+            background-color:rgb(90, 90, 90);
+        }
+        
+
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a class="active" href="#home">主页</a></li>
+        <li><a href="#news">新闻</a></li>
+        <li><a href="#movie">电影</a></li>
+        <li><a href="#sports">体育</a></li>
+    </ul>
+    <div style="margin-left:18%;padding:1px 1px;height:100%;">
+        <h2>主页</h2>
+        <p>欢迎来到綦廷浩的个人网站</p>
+        <p>这里有最新的视频</p>
+        <p>欢迎大家投币三连</p>
+        <p>我是綦廷浩</p>
+        <p>我们下次再见</p>
+    </div>
+</body>
+</html>

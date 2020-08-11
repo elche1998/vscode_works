@@ -215,8 +215,12 @@ p.para1
       1. 伪元素与CSS类：p.article:first-letter
       2. 可以有多个伪元素
 ## 六、实用组合招式
-1. 导航栏
-2. 下拉菜单
+1. 导航栏：导航栏的实质是链接列表
+   1. 垂直导航栏：ul+链接
+   2. 水平导航栏：inline或者float（用后者）
+2. 下拉菜单：任何元素都能打开下拉菜单
+   1. div(dropdown) + button(dropbtn) + div(dropdown-content)
+   2. dropdown-content隐藏（display:none），按一下button就出现(display:block)
 3. 提示工具
 4. 图片廊
    1. 图片透明/不透明
@@ -226,6 +230,7 @@ p.para1
 7. 表单
 8. 计数器
 ## 七、网页布局
+
 # CCS3
 
 # CCS响应式设计
