@@ -16,33 +16,139 @@
       3. 对象{firstName:"John", lastName:"Doe", age:50}
       4. 函数function myFunction(a,b){return a*b;}
    2. 变量，var定义。=赋值。驼峰法命名。一个var能定义多个。
+      * 把值赋给尚未声明的变量，该变量将被自动作为 window 的一个属性。`var2 = 2;`访问`window.var2;`删除`delete var2;`  
    3. 注释//，/**/
-4. 数据类型
-   1. JavaScript拥有动态类型，相同的变量可用作不同的类型（数字能改成字符串）。
-   2. 数组：`var cars = new Array();`或`var arr = ['a', 'b', 'c' ];`
-5. 对象：
-   1. 定义
-      ```JavaScript
-      var person={
-         firstname:"John", 
-         lastname:"Doe", 
-         id:5566
-         fullName : function() 
-	      {
-         return this.firstName + " " + this.lastName;
-         }
-      };
-      ```
-   1. 访问对象属性
-      * `name=person.lastname;`
-      * `name=person["lastname"];`
-   2. 访问对象方法
-      * `name = person.fullName();`返回返回值
-      * `name = person.fullName;`返回函数的定义（字符串）,作文一个属性。
-   3. 把值赋给尚未声明的变量，该变量将被自动作为 window 的一个属性。`var2 = 2;`访问`window.var2;`删除`delete var2;` 
+4. 数据类型：JavaScript拥有动态类型，相同的变量可用作不同的类型（数字能改成字符串）。
+5. 对象：有属性和方法
+   1. 对象的定义
+      1. 访问对象属性
+         * `name=person.lastname;`
+         * `name=person["lastname"];`
+      2. 访问对象方法
+         * `name = person.fullName();`返回返回值
+         * `name = person.fullName;`返回函数的定义（字符串）,作文一个属性。
+      3. 创建对象：对象通过引用来传递：var x = person;如果改变x的属性，person也会变。
+         1. Object：`var o = new Object(true);`或`person=new Object();`（不用）
+         2. 创建 name:value 对
+            ```JavaScript
+            var person={
+               firstname:"John",
+               lastname:"Doe",
+               age:50,
+               fullName:function() 
+               {
+               return this.firstName + " " + this.lastName;
+               }
+            ```
+         3. 对象构造器（是个函数）：要添加新属性必须在构造器函数中添加，不能直接加（或者用函数.prototype.xxx）。
+            ```javascript
+            function person(firstname,lastname,age,eyecolor)
+            {
+               this.firstname=firstname;
+               this.lastname=lastname;
+               this.age=age;
+               function changeName(name)
+               {
+                  this.lastname=name;
+               }
+            }
+            var myFather=new person("John","Doe",50);
+            var myMother=new person("Sally","Rally",48);
+            ```
+         4. 利用prototype（原型对象）给对象的构造函数添加新的属性或者方法
+            1. `person.prototype.nationality = "English";`
+            2. `person.prototype.name = function() {...}`
+   2. 常用对象
+      1. Number对象（数字和Number对象不一样）：
+         1. IEEE754标准（数值+指数+符号）：所有数字都为64位浮点
+         2. 进制转换（默认十进制）：var myNumber=128;myNumber.toString(16);
+         3. 无穷大：Infinity
+         4. 非数字：NaN
+         5. 对象：`var y = new Number(123)`;
+         6. 常用方法：parseFloat()，parseInt()（这两个与全局方法一致），isxxx()（也是全局isFinite，isInteger，isNaN）还有数字方法：toExponential()，toFixed()...
+      2. String对象：`var str="xxx"`;就是String对象
+         1. 常用属性：length
+         2. 常用方法：
+            1. 查找字符串（返回数字）：str.indexOf("welcome");
+            2. 内容匹配（返回字符串）：str.match("World");
+            3. 替换内容（返回整个字符串）：str.replace("Microsoft","Runoob");
+            4. 大小写转换：txt.toUpperCase()/toLowerCase()
+            5. 转为数组：n=str.split(",");或者是" ","|"
+      3. Date对象：var today = new Date();可以自己设置时间
+      4. Array对象：数组，一个数组中可以有不同的对象（元素，函数，数组）
+         1. `var myCars=new Array("Saab","Volvo","BMW");`
+         2. `var myCars=["Saab","Volvo","BMW"];`
+      5. Boolean对象：`var myBoolean=new Boolean();`
+      6. Math对象（没有构造函数）：
+         1. 算数值：`var x = Math.PI;`算数方法：`var y = Math.sqrt(16); `
+         2. 常用方法
+            1. Math.round(2.5)：与2.5最接近的整数
+            2. Math.random()：0~1之间随机数
+            3. Math.max(5,10);Math.min(5,10);
+      7. RegExp对象:i不区分大小写，g全局匹配，m多行匹配
+         1. 作为一种匹配样式(pattern)，配合match使用。
+           * ` var patt=new RegExp(pattern,modifiers);`  
+           * ` var patt=/pattern/modifiers;`（用这个）
+            ```JavaScript
+            var str="Is this all there is?";
+            var patt1=/is/g;
+            document.write(str.match(patt1));
+            ```
+         2. test()返回bool：patt1.test("this is a xx")
+         3. exec()返回数组，存放匹配的结果：
 6. 函数
-   1. `function myFunction(name,job){alert("Welcome " + name + ", the " + job);return...}`
-   2. 函数内部的变量是局部变量，函数内部可见，函数运行完毕就删除。全局变量在所有脚本和函数均可使用，页面关闭后删除。
+   1. 函数定义(function)
+      1. `function myFunction(a, b) {return a * b;}`
+      2. 函数可以存储在变量中：匿名函数 (函数没有名称)
+         ```JavaScript
+         var x = function (a, b) {return a * b};
+         var z = x(4, 3);
+         ```
+      3. Function()构造函数（不建议用了）
+         ```JavaScript
+         var myFunction = new Function("a", "b", "return a * b");
+         ```
+      4. 函数提升：可以先用再声明
+      5. 函数调用：后面加()就是立即调用，可以自己调用自己`(function(){})()`
+      6. 函数是对象，有属性（如.length）和方法（如.toString()）
+      7. 箭头函数`const x = (x, y) => { return x * y };`
+   2. 函数的参数
+      1. 显示参数（定义时，实参），隐式参数（调用时，形参）
+      2. 隐式参数的检测：
+         1. `y = y || 0;`等效于`if (y === undefined) {y = 0} `
+      3. ES6函数可以自带参数（如果隐式参数是undefined或没有`function myFunction(x, y = 10){}`
+      4. 参数太多：arguments对象（每个函数自带的对象）
+         ```JavaScript
+         function sumAll() {
+            var i, sum = 0;
+            for(i = 0; i < arguments.length; i++) {
+               sum += arguments[i];
+            }
+            return sum;
+         }
+         x=sumAll(1, 123, 500, 115, 44, 88);
+         ```
+   3. 函数调用：
+      1. 函数默认是全局对象：`myFunction()`和`window.myFunction()`是一样的
+      2. 函数作为方法调用（这个函数属于某对象）：`myObject.fullName(); `
+      3. 使用构造函数调用函数，构建一个新的对象`var x = new myFunction("John","Doe");`
+      4. 作为函数方法调用函数：call() 和 apply() 第一个参数必须是对象本身
+         1. `myObject = myFunction.call(myObject, 10, 2);`
+         2. `myArray = [10, 2];`  
+         `myObject = myFunction.apply(myObject, myArray);`
+   4. 闭包：解决计数器困境（其他函数也能访问全局变量）
+      1. 内嵌函数：函数里面套函数
+      2. 闭包？：把内嵌函数变为外部可调用，同时保护局部变量。
+         ```JavaScript
+         var add = (function () {
+            var counter = 0;
+            return function () {return counter += 1;}
+         })();
+         add();
+         add();
+         add();
+         //return的是一个新的函数，并把这个函数赋值给变量add
+         ```
 7. HTML事件：事件触发时 JavaScript 可以执行一些代码（点击某个元素onclick，完成页面加载onload）
 8. 字符串：不要创建String对象。它会拖慢执行速度，并可能产生其他副作用。
 9. 运算符：与java，C语言基本一致。
@@ -92,7 +198,7 @@
       1. 方括号：[abc]，[0-9]，[x|y]
       2. 元字符：\d，\s，\b，\uxxxx
       3. 量词：n+，n*，n?
-   5. RegExp对象：`var patt1=new RegExp("e");`
+   5. RegExp对象：`var patt1=new RegExp("e");`或`var patt1=/e/;`（用后者）
       1. test()返回bool：`patt1.test("The best things in life are free")`或`/e/.test("...")`
       2. exec()返回数组，存放匹配的结果：`/e/.exec("...");`
 ## 四、错误和调试
@@ -215,74 +321,94 @@ function validateForm(){
       1. `setTimeout(functionName, 3000);`
       2. `setTimeout(functionName(){...}, 3000);`
    2. 异步AJAX
-2. promise对象：优雅地书写复杂的异步任务
-
-# 函数
-1. 函数定义(function)
-   1. `function myFunction(a, b) {return a * b;}`
-   2. 函数可以存储在变量中：匿名函数 (函数没有名称)
-      ```JavaScript
-      var x = function (a, b) {return a * b};
-      var z = x(4, 3);
-      ```
-   1. Function()构造函数（不建议用了）
-      ```JavaScript
-      var myFunction = new Function("a", "b", "return a * b");
-      ```
-   2. 函数提升：可以先用再声明
-   3. 函数调用：后面加()就是立即调用，可以自己调用自己`(function(){})()`
-   4. 函数是对象，有属性（如.length）和方法（如.toString()）
-   5. 箭头函数`const x = (x, y) => { return x * y };`
-2. 函数的参数
-   1. 显示参数（定义时，实参），隐式参数（调用时，形参）
-   2. 隐式参数的检测：
-      1. `y = y || 0;`等效于`if (y === undefined) {y = 0} `
-   3. ES6函数可以自带参数（如果隐式参数是undefined或没有`function myFunction(x, y = 10){}`
-   4. 参数太多：arguments对象（每个函数自带的对象）
-      ```JavaScript
-      function sumAll() {
-         var i, sum = 0;
-         for(i = 0; i < arguments.length; i++) {
-            sum += arguments[i];
-         }
-         return sum;
-      }
-      x=sumAll(1, 123, 500, 115, 44, 88);
-      ```
-3. 函数调用：
-   1. 函数默认是全局对象：`myFunction()`和`window.myFunction()`是一样的
-   2. 函数作为方法调用（这个函数属于某对象）：`myObject.fullName(); `
-   3. 使用构造函数调用函数，构建一个新的对象`var x = new myFunction("John","Doe");`
-   4. 作为函数方法调用函数：call() 和 apply() 第一个参数必须是对象本身
-      1. `myObject = myFunction.call(myObject, 10, 2);`
-      2. `myArray = [10, 2];`  
-      `myObject = myFunction.apply(myObject, myArray);`
-4. 闭包：解决计数器困境（其他函数也能访问全局变量）
-   1. 内嵌函数：函数里面套函数
-   2. 闭包？：把内嵌函数变为外部可调用，同时保护局部变量。
-      ```JavaScript
-      var add = (function () {
-         var counter = 0;
-         return function () {return counter += 1;}
-      })();
-      add();
-      add();
-      add();
-      //return的是一个新的函数，并把这个函数赋值给变量add
-      ```
+2. promise对象：优雅地书写复杂的异步任务（resolve 和 reject 都是函数，resolve表示正常，reject表示异常，这两个函数的作用域只有起始函数）
+```JavaScript
+new Promise(function (resolve, reject) {
+    var a = 0;
+    var b = 1;
+    if (b == 0) reject("Diveide zero");
+    else resolve(a / b);
+}).then(function (value) {
+    console.log("a / b = " + value);
+}).catch(function (err) {
+    console.log(err);
+}).finally(function () {
+    console.log("End");
+});
+//计时器
+function print(delay, message) {
+    return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            console.log(message);
+            resolve();
+        }, delay);
+    });
+}
+print(1000, "First").then(function () {
+    return print(4000, "Second");
+}).then(function () {
+    print(3000, "Third");
+});
+```
+3. 异步函数（async function）
+```javascript
+async function asyncFunc() {
+    await print(1000, "First");
+    await print(4000, "Second");
+    await print(3000, "Third");
+}
+asyncFunc();
+```
 
 # HTML DOM
-文档对象模型（Document Object Model）
+文档对象模型（Document Object Model）：如何利用JavaScript改变网页的元素
 ![](2020-08-14-17-42-15.png)
 1. 查找 HTML 元素：
    1. 通过ID：`var x=document.getElementById("intro");`
-   2. 通过标签名：`var y=x.getElementsByTagName("p");`
-   3. 通过类名：`var x=document.getElementsByClassName("intro");`
+   2. 通过类名：`var x=document.getElementsByClassName("intro");`
+   3. 通过标签名（先通过id找到某个div，得到数组（Collection对象））：  
+      `var x=document.getElementById("main");`
+      `var y=x.getElementsByTagName("p");`
 2. 改变HTML
-3. 改变CSS
+   1. 改变输出流：`document.write()`（加载完会覆盖文档）
+   2. 改变HTML元素内容：`document.getElementById("p1").innerHTML="新文本!";`
+   3. 改变HTML属性：`document.getElementById(id).属性=新属性值`
+3. 改变CSS：`document.getElementById(id).style.样式=新样式`（可见性visibility）
 4. DOM事件
-   1. DOM事件
-   2. EventListener
-# 高级教程
+   1. 事件类型
+      * 加载完毕onload，离开页面onunload
+      * 改变字段内容onchange
+      * onmouseover鼠标在元素上，onmouseout鼠标移出元素上方
+      * onmousedown鼠标按下去，onmouseup鼠标释放，onclick 鼠标完成点击
+   2. HTML事件`<h1 onclick="...">word</h1>`
+   3. 用DOM来分配事件（就是改变属性）：`document.getElementById("myBtn").onclick=function(){displayDate()};`
+   4. 监听事件(EventListener)：一个元素能加多个事件如"click"，"mouseover"，"mouseout"
+      1. `element.addEventListener(event事件, function触发函数, useCapture捕获/冒泡);`添加监听事件
+         1. 注：冒泡(false，默认)是从下到上，捕获(true)是从上到下
+      2. `removeEventListener()`移除监听事件
+      3. IE8以前的版本，用if (x.addEventListener)判断，用"onclick"代替"click"
+5. DOM 元素（节点）：添加到尾部appendChild，添加到开头insertBefore
+   1. 先创建元素：`var para = document.createElement("p");`
+   2. 再创建节点：`var node = document.createTextNode("。。");`
+   3. 节点添加到元素中：`para.appendChild(node);`
+   4. 查找已有元素：`var element = document.getElementById("div1");`
+   5. 添加到已存在的元素中：`element.appendChild(para);`
+   6. 移除已存在元素：`parent.removeChild(child);`
+   7. 替换：`parent.replaceChild(newchild, child);`
+6. 集合(Collection)：getElementsByTagName()方法返回HTMLCollection对象。
+   1. `var myCollection = document.getElementsByTagName("p");`
+   2. 类似数组，但不是数组（可以name，id，索引获取）。x[0]是第一个元素。
+   3. 属性length
+7. 节点列表(NodeList)：与HTMLCollection类似
+   1. `var myNodelist = document.querySelectorAll("p");`
+   2. 也是类似数组，x[0]是第一个元素（只能用索引获取）。有length属性
+   3. 包含属性节点和文本节点。
+
 # 浏览器BOM
+浏览器对象模型 (BOM) 使 JavaScript 有能力与浏览器"对话"。
+
 # JS库
+JavaScript 库常被称为 JavaScript 框架
+1. jQuery
+2. Prototype
+3. MooTools
