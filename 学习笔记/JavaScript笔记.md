@@ -1,4 +1,4 @@
-# 初级教程
+# JavaScript教程
 ## 一、基础知识
 1. 基本用法
    1. 在网页上面写脚本：`<script></script>`
@@ -19,6 +19,33 @@
       * 把值赋给尚未声明的变量，该变量将被自动作为 window 的一个属性。`var2 = 2;`访问`window.var2;`删除`delete var2;`  
    3. 注释//，/**/
 4. 数据类型：JavaScript拥有动态类型，相同的变量可用作不同的类型（数字能改成字符串）。
+   1. typeof查看变量的数据类型。`arr instanceof Array`看arr是不是Array类型的对象。
+      1. 数组/对象是object
+      2. null是类型是object，用来清空对象。
+      3. undefined的类型是undefined，用来清空任何变量。
+   2. 数据类型：string，number(NaN是number)，boolean，object，function，symbol
+   3. 对象类型：Object，Date，Array(但是Date和Array的typeof都是返回object)
+   4. 类型转换：
+      1. 全局方法String(),Number(),Boolean()
+      2. xx.toString()，xx.getTime()
+      3. var x = + y; 把字符串y变成数字。
+   5. 正则表达式：`var patt = /runoob/i`
+      * `var str = "Visit Runoob!"; `
+      1. search()：匹配子字符串，返回位置  
+         `var n = str.search(/Runoob/i);`
+      2. replace()：替换子字符串Microsoft（这里也可以用字符串"Microsoft"代替/microsoft/i）替换为 Runoob
+         `var txt = str.replace(/microsoft/i,"Runoob");`
+      3. 正则表达式修饰符：
+         1. i不区分大小写
+         2. g全局匹配（匹配一个后不停止）
+         3. m多行匹配
+      4. 正则表达式模式
+         1. 方括号：[abc]，[0-9]，[x|y]
+         2. 元字符：\d，\s，\b，\uxxxx
+         3. 量词：n+，n*，n?
+      5. RegExp对象：`var patt1=new RegExp("e");`或`var patt1=/e/;`（用后者）
+         1. test()返回bool：`patt1.test("The best things in life are free")`或`/e/.test("...")`
+         2. exec()返回数组，存放匹配的结果：`/e/.exec("...");`
 5. 对象：有属性和方法
    1. 对象的定义
       1. 访问对象属性
@@ -173,35 +200,7 @@
     2. length属性可获得数组的长度
     3. break跳出循环，continue开始下一次循环
     4. 标签：标记一个代码块。`labelname:{...}`，用`break/continue labelname`能跳出代码块
-## 三、数据类型
-1. typeof查看变量的数据类型。`arr instanceof Array`看arr是不是Array类型的对象。
-   1. 数组/对象是object
-   2. null是类型是object，用来清空对象。
-   3. undefined的类型是undefined，用来清空任何变量。
-2. 数据类型：string，number(NaN是number)，boolean，object，function，symbol
-3. 对象类型：Object，Date，Array(但是Date和Array的typeof都是返回object)
-4. 类型转换：
-   1. 全局方法String(),Number(),Boolean()
-   2. xx.toString()，xx.getTime()
-   3. var x = + y; 把字符串y变成数字。
-5. 正则表达式：`var patt = /runoob/i`
-   * `var str = "Visit Runoob!"; `
-   1. search()：匹配子字符串，返回位置  
-      `var n = str.search(/Runoob/i);`
-   2. replace()：替换子字符串Microsoft（这里也可以用字符串"Microsoft"代替/microsoft/i）替换为 Runoob
-      `var txt = str.replace(/microsoft/i,"Runoob");`
-   3. 正则表达式修饰符：
-      1. i不区分大小写
-      2. g全局匹配（匹配一个后不停止）
-      3. m多行匹配
-   4. 正则表达式模式
-      1. 方括号：[abc]，[0-9]，[x|y]
-      2. 元字符：\d，\s，\b，\uxxxx
-      3. 量词：n+，n*，n?
-   5. RegExp对象：`var patt1=new RegExp("e");`或`var patt1=/e/;`（用后者）
-      1. test()返回bool：`patt1.test("The best things in life are free")`或`/e/.test("...")`
-      2. exec()返回数组，存放匹配的结果：`/e/.exec("...");`
-## 四、错误和调试
+## 三、错误和调试
 1. 错误：throw和try、catch(err)、finally
 ```JavaScript
 try { 
@@ -223,7 +222,7 @@ try {
    2. 断点。debugger可以设置断点。
 3. js变量提升hoisting（声明的变量`var x;`会被悄悄提到最开头，初始化`var x = 5;`的不会）。
 4. 严格模式：不能使用未声明的变量等...`"use strict";`只允许出现在脚本或函数的开头。
-## 五、表单验证
+## 四、表单验证
 1. 表单验证：return validateForm()，验证不通过返回false，阻止表单提交。
 ```html
 <form name="myForm" action="demo_form.php"
@@ -281,7 +280,7 @@ function validateForm(){
          txt = "输入的值太大了";
       }
    ```
-## 六、关键字
+## 五、关键字
 1. this
    1. 在方法中，this表示该方法所属的对象。
    2. 单独使用，this表示全局对象。object Window。
@@ -301,9 +300,9 @@ function validateForm(){
          1. `<a href="javascript:void(0)">`
          2. `<a href="javascript:void(alert('Warning!!!'))">点我!</a>`
       2. 补充：href="#pos"定位到页面的某个位置（默认#top顶端）（某个id）
-## 七、JSON 
-1. JSON(JavaScript Object Notation)：存储和传输数据的格
-2.  JSON数据：键值对 `"name":"Runoob"`
+## 六、JSON格式
+1. JSON(JavaScript Object Notation)：存储和传输数据的格式
+2. JSON数据：键值对 `"name":"Runoob"`
 3. JSON对象：多个键值对`{"name":"Runoob", "url":"www.runoob.com"}`
 4. JSON数组：多个对象
    ```JSON
@@ -315,7 +314,7 @@ function validateForm(){
    ```
 5. JSON.parse():将字符串转换为JavaScript对象`var obj = JSON.parse(text);`
 6. JSON.stringify(): 将JavaScript值转换为JSON字符串`JSON.stringify(value[, replacer[, space]])`
-## 八、异步编程
+## 七、异步编程
 1. 异步编程
    1. 回调函数（3s后执行一个函数）
       1. `setTimeout(functionName, 3000);`
@@ -360,8 +359,8 @@ async function asyncFunc() {
 asyncFunc();
 ```
 
-# HTML DOM
-文档对象模型（Document Object Model）：如何利用JavaScript改变网页的元素
+# HTML DOM：文档对象模型
+文档对象模型(Document Object Model)：如何利用JavaScript改变网页的元素
 ![](2020-08-14-17-42-15.png)
 1. 查找 HTML 元素：
    1. 通过ID：`var x=document.getElementById("intro");`
@@ -404,8 +403,33 @@ asyncFunc();
    2. 也是类似数组，x[0]是第一个元素（只能用索引获取）。有length属性
    3. 包含属性节点和文本节点。
 
-# 浏览器BOM
-浏览器对象模型 (BOM) 使 JavaScript 有能力与浏览器"对话"。
+# BOM：浏览器对象模型
+浏览器对象模型 (Browser Object Model) ：使JavaScript有能力与浏览器"对话"。
+1. window对象：
+   1. 全局变量是 window 对象的属性。
+   2. 全局函数是 window 对象的方法。
+   3. 甚至 HTML DOM 的 document 也是 window 对象的属性。
+   4. window尺寸：window.innerHeight/innerWidth
+   5. window.open()打开新窗口，window.close()关闭当前窗口，window.moveTo()移动当前窗口，window.resizeTo()调整当前窗口的尺寸
+2. window.screen（可不用前缀）
+   1. screen.availWidth - 可用的屏幕宽度
+   2. screen.availHeight - 可用的屏幕高度
+3. window.location（可不用前缀）
+   1. location.href：当前页面的URL
+   2. location.assign("https://www.runoob.com")：加载新网页
+4. window.history（可不用前缀）
+   1. history.back()：后退
+   2. history.forward()：前进
+5. window.navigator（可不用前缀）：有关浏览器的信息
+6. JavaScript弹窗：警告框、确认框、提示框（可以输入）。
+   1. 警告框：alert("你好，我是一个警告框！");
+   2. 确认框：r=confirm("确认框有确认/取消按钮");
+   3. 提示框：var=prompt("请输入你的名字","Harry Potter");
+7. JavaScript 计时事件
+   1. setInterval(function,n)：n毫秒后不停执行。clearInterval(myVar)停止。（myVar要是使用全局变量）
+   2. setTimeout(function,n)：n毫秒后执行一次。clearTimeout(myVar)停止。（myVar要是使用全局变量）
+8. JavaScript Cookie：存储 web 页面的用户信息（储存在本地，名/值对）
+   * 使用document.cookie属性来创建，读取，修改，删除cookie
 
 # JS库
 JavaScript 库常被称为 JavaScript 框架
