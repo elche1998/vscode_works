@@ -207,12 +207,12 @@ p.para1
    2. :first-child伪类：`p:first-child{color:blue;}`，只有第一个`<p>`变蓝（匹配）。
    3. :lang伪类：为不同的语言定义特殊的规则
    4. :focus伪类：input:focus，鼠标点了，可以变颜色（等）
-2. 伪元素(pseudo-element)：CSS类和伪类都能用
-   1. :first-line：首行特殊设置，只能用于块级元素：`p:first-line{color:#ff0000;}`
-   2. :first-letter：首字母特殊设置，只能用于块级元素：`p:first-letter{font-size:xx-large;}`
-   3. :before：/:after，在元素前后插入新内容：`h1:before{content:url(smiley.gif);}`
+2. 伪元素(pseudo-element)：CSS类和伪类都能用（css3为了区分伪类和伪元素，伪元素采用双冒号写法）
+   1. ::first-line，首行特殊设置，只能用于块级元素：`p:first-line{color:#ff0000;}`
+   2. ::first-letter，首字母特殊设置，只能用于块级元素：`p:first-letter{font-size:xx-large;}`
+   3. ::before/::after，在元素前后插入新内容：`h1:before{content:url(smiley.gif);}`
    4. 补充
-      1. 伪元素与CSS类：p.article:first-letter
+      1. 伪元素与CSS类：p.article::first-letter
       2. 可以有多个伪元素
 ## 六、实用组合招式
 1. 导航栏：导航栏的实质是链接列表
@@ -221,14 +221,26 @@ p.para1
 2. 下拉菜单：任何元素都能打开下拉菜单
    1. div(dropdown) + button(dropbtn) + div(dropdown-content)
    2. dropdown-content隐藏（display:none），按一下button就出现(display:block)
-3. 提示工具
+3. 提示工具(tooltip)：鼠标移在图标上，显示提示。
+   1. div(tooltip) + span(tooltiptext)。
+   2. 鼠标移在tooltip上， tooltiptext由hidden变为visible
+   3. 添加箭头：伪元素::after
 4. 图片廊
-   1. 图片透明/不透明
-   2. 图片拼合
-5. 媒体类型
-6. 属性选择器
-7. 表单
-8. 计数器
+   1. 图片廊：div+a（有响应，无响应）
+   2. 图片透明/不透明：opacity（0~1，越小越透明）
+   3. 图片拼合：创建导航列表（图片作链接）
+5. 媒体类型：@media 规则
+6. 属性选择器：有某个属性的适用某样式
+   1. 属性选择器：`[title]{color:blue;}`
+   2. 属性和值选择器：
+      1. `[lang=en] { color:blue;}`
+      2. 多值：`[title~=hello]{color:blue;}`,`[lang|=en] {color:blue;}`
+7. 表单：`input[type=text]`，`input[type=submit]`
+8. 计数器（插入数字标题1.2.3...）：
+   1. counter-reset - 创建或者重置计数器
+   2. counter-increment - 递增变量
+   3. content - 插入生成的内容
+   4. counter() 或 counters() 函数 - 将计数器的值添加到元素
 ## 七、网页布局
 
 # CCS3
